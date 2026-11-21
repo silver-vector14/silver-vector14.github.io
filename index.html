@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日大赛在线入口 - 创意赛事品牌 | 官方视频门户</title>
+<meta name="description" content="每日大赛在线入口官方网站，聚焦创意赛事与原创影像，为创作者与企业搭建高品质内容生态，汇聚每日挑战、作品展示与赛事动态。">
+<style>
+:root{
+--dm-bg:#0e1116;
+--dm-bg2:#151a22;
+--dm-panel:#1b222c;
+--dm-line:#2a3441;
+--dm-text:#e6ecf3;
+--dm-sub:#9aa8b8;
+--dm-neon:#20e3a2;
+--dm-neon2:#39b7ff;
+--dm-warn:#ffd166;
+--dm-radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+background:var(--dm-bg);
+color:var(--dm-text);
+line-height:1.75;
+-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+.dm-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.dm-sticky-head{position:sticky;top:0;z-index:60}
+/* 公告条 */
+.dm-notice{
+background:linear-gradient(90deg,#123b2f,#0e2a3f 60%,#1b1440);
+border-bottom:1px solid var(--dm-line);
+font-size:13px;
+}
+.dm-notice-inner{
+display:flex;align-items:center;gap:12px;padding:9px 24px;
+max-width:1200px;margin:0 auto;flex-wrap:wrap;
+}
+.dm-notice-tag{
+background:var(--dm-neon);color:#06120e;font-weight:700;
+padding:2px 10px;border-radius:999px;font-size:12px;letter-spacing:.5px;
+}
+.dm-notice-text{color:#cfe6dc;flex:1;min-width:200px}
+.dm-notice-text b{color:#fff}
+.dm-notice-link{color:var(--dm-neon2);font-weight:600;white-space:nowrap}
+.dm-notice-link:hover{text-decoration:underline}
+/* 页头 */
+.dm-header{
+background:rgba(14,17,22,.92);
+backdrop-filter:blur(12px);
+border-bottom:1px solid var(--dm-line);
+}
+.dm-header-inner{
+display:flex;align-items:center;gap:20px;
+max-width:1200px;margin:0 auto;padding:14px 24px;
+}
+.dm-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;white-space:nowrap}
+.dm-logo-mark{
+width:34px;height:34px;border-radius:10px;
+background:linear-gradient(135deg,var(--dm-neon),var(--dm-neon2));
+display:grid;place-items:center;color:#06120e;font-size:17px;font-weight:900;
+}
+.dm-logo small{display:block;font-size:11px;font-weight:500;color:var(--dm-sub);letter-spacing:2px}
+.dm-nav{display:flex;gap:4px;margin-left:8px;flex:1}
+.dm-nav a{
+padding:8px 12px;border-radius:9px;font-size:14px;color:var(--dm-sub);
+transition:.2s;
+}
+.dm-nav a:hover,.dm-nav a.dm-active{color:#fff;background:rgba(32,227,162,.12)}
+.dm-search{
+display:flex;align-items:center;gap:8px;
+background:var(--dm-panel);border:1px solid var(--dm-line);
+border-radius:999px;padding:7px 8px 7px 16px;min-width:200px;
+}
+.dm-search input{background:none;border:none;outline:none;color:var(--dm-text);font-size:13px;width:120px}
+.dm-search input::placeholder{color:#5d6b7c}
+.dm-search button{
+background:var(--dm-neon);color:#06120e;font-weight:700;
+border-radius:999px;padding:5px 12px;font-size:12px;
+}
+.dm-search-result{
+position:absolute;top:100%;right:24px;margin-top:8px;
+background:var(--dm-panel);border:1px solid var(--dm-line);
+border-radius:12px;padding:10px 14px;font-size:13px;color:var(--dm-sub);
+display:none;z-index:80;max-width:300px;
+}
+.dm-search-result.dm-show{display:block}
+.dm-burger{display:none;font-size:22px;padding:6px 10px;border:1px solid var(--dm-line);border-radius:9px}
+/* 首屏 */
+.dm-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--dm-line)}
+.dm-hero-grid{
+display:grid;grid-template-columns:1.05fr .95fr;gap:48px;
+padding:64px 0 56px;align-items:center;
+}
+.dm-hero-eyebrow{
+display:inline-flex;align-items:center;gap:8px;
+border:1px solid rgba(32,227,162,.4);color:var(--dm-neon);
+padding:5px 14px;border-radius:999px;font-size:12.5px;letter-spacing:1px;margin-bottom:22px;
+}
+.dm-hero-pulse{width:7px;height:7px;border-radius:50%;background:var(--dm-neon);box-shadow:0 0 0 4px rgba(32,227,162,.18)}
+h1.dm-hero-title{
+font-size:clamp(38px,5.4vw,60px);line-height:1.12;letter-spacing:-1px;font-weight:900;
+}
+h1.dm-hero-title em{
+font-style:normal;
+background:linear-gradient(90deg,var(--dm-neon),var(--dm-neon2));
+-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.dm-hero-desc{color:var(--dm-sub);font-size:15.5px;margin-top:20px;max-width:540px}
+.dm-hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.dm-btn{
+display:inline-flex;align-items:center;gap:8px;
+padding:12px 24px;border-radius:11px;font-weight:700;font-size:14.5px;
+transition:.2s;
+}
+.dm-btn-main{background:linear-gradient(135deg,var(--dm-neon),#14c98c);color:#06120e}
+.dm-btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(32,227,162,.28)}
+.dm-btn-ghost{border:1px solid var(--dm-line);color:var(--dm-text);background:var(--dm-panel)}
+.dm-btn-ghost:hover{border-color:var(--dm-neon);color:var(--dm-neon)}
+.dm-hero-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.dm-stat b{display:block;font-size:26px;color:#fff;font-weight:800;letter-spacing:.5px}
+.dm-stat span{font-size:12.5px;color:var(--dm-sub)}
+.dm-hero-visual{position:relative}
+.dm-hero-frame{
+border-radius:22px;overflow:hidden;border:1px solid var(--dm-line);
+box-shadow:0 30px 70px rgba(0,0,0,.5);
+aspect-ratio:16/10;position:relative;
+}
+.dm-hero-frame svg{width:100%;height:100%;display:block}
+.dm-hero-float{
+position:absolute;bottom:-20px;left:-20px;
+background:var(--dm-panel);border:1px solid var(--dm-line);
+border-radius:14px;padding:12px 16px;display:flex;gap:10px;align-items:center;
+box-shadow:0 16px 40px rgba(0,0,0,.45);
+}
+.dm-hero-float .dm-mini-avatar{
+width:36px;height:36px;border-radius:50%;
+background:linear-gradient(135deg,#ff8a5b,#ffd166);
+display:grid;place-items:center;color:#3a1a00;font-weight:800;font-size:14px;
+}
+.dm-hero-float p{font-size:12px;color:var(--dm-sub);line-height:1.5}
+.dm-hero-float b{color:#fff;font-size:13px}
+/* 通用 section */
+.dm-section{padding:72px 0;border-bottom:1px solid var(--dm-line)}
+.dm-sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:38px;flex-wrap:wrap}
+.dm-sec-eyebrow{
+color:var(--dm-neon);font-size:12.5px;letter-spacing:2.5px;font-weight:700;margin-bottom:8px;
+}
+h2.dm-sec-title{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.5px}
+.dm-sec-sub{color:var(--dm-sub);font-size:14px;margin-top:8px;max-width:620px}
+.dm-sec-more{font-size:13.5px;color:var(--dm-neon2);font-weight:600;white-space:nowrap}
+.dm-sec-more:hover{text-decoration:underline}
+/* 关键词解析 */
+.dm-about{background:var(--dm-bg2)}
+.dm-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.dm-about-card{
+background:var(--dm-panel);border:1px solid var(--dm-line);
+border-radius:var(--dm-radius);padding:26px 28px;
+}
+.dm-about-card h3{font-size:18px;margin-bottom:12px;color:#fff}
+.dm-about-card h3 span{color:var(--dm-neon);margin-right:8px}
+.dm-about-card p{font-size:14px;color:var(--dm-sub);margin-bottom:12px}
+.dm-about-card p:last-child{margin-bottom:0}
+/* 焦点内容 */
+.dm-focus-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:20px}
+.dm-card{
+background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:var(--dm-radius);
+overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+}
+.dm-card:hover{transform:translateY(-4px);border-color:rgba(32,227,162,.45);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.dm-cover{position:relative;aspect-ratio:16/9;overflow:hidden}
+.dm-cover svg{width:100%;height:100%;display:block}
+.dm-cover-tag{
+position:absolute;top:10px;left:10px;
+background:rgba(6,18,14,.72);border:1px solid rgba(32,227,162,.5);
+color:var(--dm-neon);font-size:11.5px;font-weight:700;
+padding:3px 10px;border-radius:999px;backdrop-filter:blur(6px);
+}
+.dm-play{
+position:absolute;inset:0;display:grid;place-items:center;
+background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55));
+}
+.dm-play span{
+width:44px;height:44px;border-radius:50%;
+background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);
+display:grid;place-items:center;backdrop-filter:blur(4px);
+}
+.dm-play span::after{
+content:"";border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;
+margin-left:3px;
+}
+.dm-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.dm-card-title{font-size:15.5px;font-weight:700;line-height:1.45}
+.dm-card-desc{font-size:13px;color:var(--dm-sub);flex:1}
+.dm-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:#6d7b8c}
+.dm-avatar{
+width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+font-size:11px;font-weight:800;color:#06120e;flex-shrink:0;
+}
+.dm-card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.dm-tag{
+font-size:11.5px;color:var(--dm-neon2);background:rgba(57,183,255,.1);
+border:1px solid rgba(57,183,255,.25);border-radius:999px;padding:1px 9px;
+}
+.dm-card-actions{display:flex;gap:14px;font-size:12.5px;color:var(--dm-sub);padding-top:8px;border-top:1px solid var(--dm-line)}
+.dm-card-actions button{display:flex;align-items:center;gap:5px;transition:.15s}
+.dm-card-actions button:hover{color:var(--dm-neon)}
+.dm-card-actions button.dm-liked{color:var(--dm-neon)}
+.dm-card-actions button.dm-collected{color:var(--dm-warn)}
+/* 专题 */
+.dm-topic-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.dm-topic{
+background:linear-gradient(160deg,var(--dm-panel),#161c24);
+border:1px solid var(--dm-line);border-radius:var(--dm-radius);
+padding:22px;position:relative;overflow:hidden;transition:.25s;
+}
+.dm-topic:hover{border-color:rgba(57,183,255,.5);transform:translateY(-3px)}
+.dm-topic-no{
+font-size:44px;font-weight:900;color:rgba(57,183,255,.14);line-height:1;margin-bottom:6px;
+}
+.dm-topic h3{font-size:17px;margin-bottom:8px}
+.dm-topic p{font-size:13px;color:var(--dm-sub);margin-bottom:14px}
+.dm-topic-status{font-size:12px;color:var(--dm-warn);display:flex;align-items:center;gap:6px}
+.dm-topic-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dm-warn)}
+/* 创作者 */
+.dm-creator-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.dm-creator{
+background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:var(--dm-radius);
+padding:22px;text-align:center;transition:.25s;
+}
+.dm-creator:hover{transform:translateY(-4px);border-color:rgba(32,227,162,.45)}
+.dm-creator-avatar{
+width:64px;height:64px;border-radius:50%;margin:0 auto 12px;
+display:grid;place-items:center;font-size:24px;font-weight:900;color:#06120e;
+}
+.dm-creator h3{font-size:16px;margin-bottom:3px}
+.dm-creator-role{font-size:12.5px;color:var(--dm-neon);margin-bottom:10px}
+.dm-creator p{font-size:12.5px;color:var(--dm-sub);margin-bottom:14px;min-height:54px}
+.dm-creator-stats{display:flex;justify-content:center;gap:18px;font-size:12px;color:var(--dm-sub);border-top:1px solid var(--dm-line);padding-top:12px}
+.dm-creator-stats b{display:block;color:#fff;font-size:15px}
+/* 榜单 */
+.dm-rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dm-rank-box{background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:var(--dm-radius);padding:22px 24px}
+.dm-rank-box h3{font-size:16px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.dm-rank-box h3 span{color:var(--dm-neon2)}
+.dm-rank-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--dm-line);font-size:13.5px}
+.dm-rank-item:last-child{border-bottom:none}
+.dm-rank-num{font-weight:900;color:#4a5a6d;width:20px;font-size:15px}
+.dm-rank-item.dm-top .dm-rank-num{color:var(--dm-neon)}
+.dm-rank-name{flex:1}
+.dm-rank-val{color:var(--dm-sub);font-size:12px}
+/* 评价 */
+.dm-comment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.dm-comment{
+background:var(--dm-bg2);border:1px solid var(--dm-line);border-radius:14px;padding:18px 20px;
+position:relative;
+}
+.dm-comment::before{
+content:"“";position:absolute;top:6px;right:16px;font-size:44px;color:rgba(57,183,255,.16);font-family:Georgia,serif;line-height:1;
+}
+.dm-comment-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.dm-comment-head b{font-size:13.5px}
+.dm-comment-head span{font-size:11.5px;color:#6d7b8c}
+.dm-comment p{font-size:13px;color:var(--dm-sub)}
+/* 动态 */
+.dm-news-list{display:flex;flex-direction:column;gap:2px}
+.dm-news-item{
+display:flex;gap:20px;align-items:baseline;padding:18px 20px;
+background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:12px;
+transition:.2s;
+}
+.dm-news-item:hover{border-color:rgba(32,227,162,.4);transform:translateX(4px)}
+.dm-news-date{font-size:12.5px;color:var(--dm-neon);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dm-news-item h3{font-size:14.5px;font-weight:600;margin-bottom:3px}
+.dm-news-item p{font-size:12.5px;color:var(--dm-sub)}
+/* FAQ */
+.dm-faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dm-faq details{
+background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:12px;padding:14px 18px;
+transition:.2s;
+}
+.dm-faq details[open]{border-color:rgba(57,183,255,.45)}
+.dm-faq summary{
+font-size:14px;font-weight:600;cursor:pointer;list-style:none;
+display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.dm-faq summary::-webkit-details-marker{display:none}
+.dm-faq summary::after{content:"+";color:var(--dm-neon);font-size:18px;font-weight:400;flex-shrink:0}
+.dm-faq details[open] summary::after{content:"−"}
+.dm-faq details p{font-size:13px;color:var(--dm-sub);margin-top:10px;line-height:1.7}
+/* 合作 */
+.dm-partners{display:flex;flex-wrap:wrap;gap:14px}
+.dm-partner{
+flex:1;min-width:160px;text-align:center;
+background:var(--dm-bg2);border:1px solid var(--dm-line);border-radius:12px;
+padding:20px 14px;font-size:14px;font-weight:700;color:var(--dm-sub);
+transition:.2s;
+}
+.dm-partner:hover{color:#fff;border-color:rgba(32,227,162,.4)}
+.dm-partner small{display:block;font-size:11px;font-weight:400;color:#5d6b7c;margin-top:3px}
+/* 表单/联系 */
+.dm-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.dm-contact-info h3{font-size:19px;margin-bottom:14px}
+.dm-contact-info p{font-size:14px;color:var(--dm-sub);margin-bottom:10px}
+.dm-contact-form{background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:var(--dm-radius);padding:26px}
+.dm-field{margin-bottom:14px}
+.dm-field label{display:block;font-size:12.5px;color:var(--dm-sub);margin-bottom:6px}
+.dm-field input,.dm-field textarea{
+width:100%;background:var(--dm-bg);border:1px solid var(--dm-line);border-radius:9px;
+padding:10px 14px;color:var(--dm-text);font-size:13.5px;outline:none;transition:.2s;
+}
+.dm-field input:focus,.dm-field textarea:focus{border-color:var(--dm-neon)}
+.dm-field textarea{resize:vertical;min-height:88px}
+.dm-form-tip{font-size:12px;color:var(--dm-neon);margin-top:10px;display:none}
+.dm-form-tip.dm-show{display:block}
+/* 页脚 */
+.dm-footer{background:var(--dm-bg2);padding:52px 0 0;border-top:1px solid var(--dm-line)}
+.dm-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:38px}
+.dm-footer-brand p{font-size:13px;color:var(--dm-sub);margin-top:14px;max-width:300px}
+.dm-footer h4{font-size:13.5px;margin-bottom:14px;color:#fff}
+.dm-footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.dm-footer li a{font-size:13px;color:var(--dm-sub);transition:.15s}
+.dm-footer li a:hover{color:var(--dm-neon)}
+.dm-footer-bottom{
+border-top:1px solid var(--dm-line);padding:20px 0;
+font-size:12px;color:#5d6b7c;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+/* 回顶 */
+.dm-top{
+position:fixed;right:22px;bottom:26px;width:44px;height:44px;border-radius:12px;
+background:var(--dm-panel);border:1px solid var(--dm-line);color:var(--dm-neon);
+display:grid;place-items:center;font-size:18px;z-index:50;
+opacity:0;pointer-events:none;transition:.25s;
+}
+.dm-top.dm-show{opacity:1;pointer-events:auto}
+.dm-top:hover{border-color:var(--dm-neon);background:rgba(32,227,162,.12)}
+/* Toast */
+.dm-toast{
+position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+background:#0b2b22;border:1px solid rgba(32,227,162,.6);color:#d5fff0;
+padding:10px 22px;border-radius:999px;font-size:13.5px;z-index:99;
+opacity:0;pointer-events:none;transition:.3s;white-space:nowrap;
+}
+.dm-toast.dm-show{opacity:1;transform:translate(-50%,0)}
+/* 弹窗 */
+.dm-modal{
+position:fixed;inset:0;background:rgba(5,8,12,.75);backdrop-filter:blur(4px);
+display:none;place-items:center;z-index:90;padding:24px;
+}
+.dm-modal.dm-show{display:grid}
+.dm-modal-box{
+background:var(--dm-panel);border:1px solid var(--dm-line);border-radius:18px;
+max-width:440px;width:100%;padding:26px 28px;position:relative;
+box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+.dm-modal-box h3{font-size:18px;margin-bottom:10px}
+.dm-modal-box p{font-size:13.5px;color:var(--dm-sub);margin-bottom:16px}
+.dm-modal-close{position:absolute;top:12px;right:14px;font-size:20px;color:#6d7b8c;line-height:1}
+.dm-modal-close:hover{color:#fff}
+.dm-share-row{display:flex;gap:10px;flex-wrap:wrap}
+.dm-share-row button{
+flex:1;min-width:90px;background:var(--dm-bg);border:1px solid var(--dm-line);
+border-radius:10px;padding:10px;font-size:13px;transition:.2s;
+}
+.dm-share-row button:hover{border-color:var(--dm-neon);color:var(--dm-neon)}
+.dm-modal-box textarea{
+width:100%;background:var(--dm-bg);border:1px solid var(--dm-line);border-radius:9px;
+padding:10px 12px;color:var(--dm-text);font-size:13px;min-height:90px;outline:none;margin-bottom:14px;
+}
+/* 响应式 */
+@media(max-width:1000px){
+.dm-hero-grid{grid-template-columns:1fr;gap:36px}
+.dm-focus-grid{grid-template-columns:1fr 1fr}
+.dm-about-grid,.dm-contact-grid{grid-template-columns:1fr}
+.dm-footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+.dm-nav{
+display:none;position:absolute;top:100%;left:0;right:0;
+background:rgba(14,17,22,.98);border-bottom:1px solid var(--dm-line);
+flex-direction:column;padding:12px 24px;gap:2px;backdrop-filter:blur(12px);
+}
+.dm-nav.dm-open{display:flex}
+.dm-header-inner{position:relative;flex-wrap:wrap}
+.dm-burger{display:block;margin-left:auto}
+.dm-search{order:5;width:100%;min-width:0}
+.dm-search input{flex:1;width:auto}
+.dm-focus-grid{grid-template-columns:1fr}
+.dm-faq{grid-template-columns:1fr}
+.dm-rank-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+.dm-hero-stats{gap:20px}
+.dm-section{padding:52px 0}
+.dm-footer-grid{grid-template-columns:1fr}
+.dm-hero-float{display:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="dm-sticky-head">
+  <div class="dm-notice">
+    <div class="dm-notice-inner">
+      <span class="dm-notice-tag">公告</span>
+      <span class="dm-notice-text">第 47 期「每日大赛」主题发布：<b>“城市的一分钟”</b>，报名通道已开启，本期新增 4 个官方认证赛区。</span>
+      <a class="dm-notice-link" href="#dm-news">查看更新 &rarr;</a>
+    </div>
+  </div>
+  <header class="dm-header">
+    <div class="dm-header-inner">
+      <a class="dm-logo" href="#dm-top">
+        <span class="dm-logo-mark">赛</span>
+        <span>每日大赛<small>DAILY ARENA</small></span>
+      </a>
+      <nav class="dm-nav" id="dm-nav">
+        <a class="dm-active" href="#dm-top">首页</a>
+        <a href="#dm-focus">焦点作品</a>
+        <a href="#dm-topics">专题企划</a>
+        <a href="#dm-creators">创作者</a>
+        <a href="#dm-rank">榜单</a>
+        <a href="#dm-news">企业动态</a>
+        <a href="#dm-contact">联系与投稿</a>
+      </nav>
+      <div class="dm-search">
+        <input type="text" id="dm-search-input" placeholder="搜索赛事、作品或创作者" aria-label="站内搜索">
+        <button type="button" id="dm-search-btn">搜索</button>
+      </div>
+      <button class="dm-burger" id="dm-burger" aria-label="展开导航">☰</button>
+    </div>
+    <div class="dm-search-result" id="dm-search-result"></div>
+  </header>
+</div>
+
+<main id="dm-top">
+
+  <!-- 首屏 -->
+  <section class="dm-hero">
+    <div class="dm-wrap">
+      <div class="dm-hero-grid">
+        <div class="dm-hero-copy">
+          <span class="dm-hero-eyebrow"><i class="dm-hero-pulse"></i>每日大赛 · 官方网站</span>
+          <h1 class="dm-hero-title">每日大赛<br><em>在线入口</em></h1>
+          <p class="dm-hero-desc">每日大赛官方网站，是一个以“每一天都是一次命题创作”为核心机制的视频创意赛事品牌。我们以固定周期发布主题挑战，向所有创作者开放报名、上传与投票通道，用持续运营的赛事节奏，沉淀真正值得信赖的原创影像内容生态。</p>
+          <div class="dm-hero-btns">
+            <a class="dm-btn dm-btn-main" href="#dm-focus">进入本期赛区</a>
+            <a class="dm-btn dm-btn-ghost" href="#dm-contact">立即报名投稿</a>
+            <a class="dm-btn dm-btn-ghost" href="#dm-about">了解品牌理念</a>
+          </div>
+          <div class="dm-hero-stats">
+            <div class="dm-stat"><b>47</b><span>已举办赛事期数</span></div>
+            <div class="dm-stat"><b>12,860+</b><span>累计征集原创作品</span></div>
+            <div class="dm-stat"><b>38.6 万</b><span>社区注册创作者</span></div>
+          </div>
+        </div>
+        <div class="dm-hero-visual">
+          <div class="dm-hero-frame">
+            <svg viewBox="0 0 640 400" role="img" aria-label="每日大赛主视觉：夜色中的创意竞技场与赛场光束">
+              <defs>
+                <linearGradient id="dmHeroBg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0b1f2c"/>
+                  <stop offset="1" stop-color="#132a23"/>
+                </linearGradient>
+                <linearGradient id="dmHeroBeam" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#20e3a2" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#20e3a2" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="dmHeroBeam2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#39b7ff" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#39b7ff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#dmHeroBg)"/>
+              <g opacity=".5" stroke="#2a4a52" stroke-width="1">
+                <line x1="0" y1="120" x2="640" y2="60"/>
+                <line x1="0" y1="200" x2="640" y2="150"/>
+                <line x1="0" y1="280" x2="640" y2="240"/>
+              </g>
+              <circle cx="120" cy="70" r="2" fill="#20e3a2"/>
+              <circle cx="330" cy="46" r="1.5" fill="#39b7ff"/>
+              <circle cx="540" cy="96" r="2" fill="#ffd166"/>
+              <circle cx="210" cy="110" r="1.5" fill="#20e3a2"/>
+              <polygon points="150,0 260,0 200,300 120,300" fill="url(#dmHeroBeam)"/>
+              <polygon points="400,0 500,0 540,300 450,300" fill="url(#dmHeroBeam2)"/>
+              <rect x="0" y="300" width="640" height="100" fill="#0a1418"/>
+              <rect x="0" y="300" width="640" height="2" fill="#20e3a2" opacity=".6"/>
+              <g fill="#1d3540">
+                <rect x="40" y="250" width="60" height="52" rx="4"/>
+                <rect x="120" y="230" width="48" height="72" rx="4"/>
+                <rect x="480" y="240" width="54" height="62" rx="4"/>
+                <rect x="552" y="256" width="64" height="46" rx="4"/>
+              </g>
+              <circle cx="320" cy="256" r="34" fill="none" stroke="#20e3a2" stroke-width="2" opacity=".8"/>
+              <circle cx="320" cy="256" r="26" fill="none" stroke="#39b7ff" stroke-width="1.5" opacity=".6"/>
+              <polygon points="313,244 336,256 313,268" fill="#20e3a2"/>
+              <g font-family="Arial" font-size="15" font-weight="bold" fill="#e6ecf3">
+                <text x="34" y="370">DAY 47</text>
+              </g>
+              <g font-family="Arial" font-size="11" fill="#6d8a94">
+                <text x="520" y="370">DAILY ARENA</text>
+              </g>
+            </svg>
+          </div>
+          <div class="dm-hero-float">
+            <span class="dm-mini-avatar">林</span>
+            <p><b>本期已有 2,318 人报名</b><br>距报名截止还有 6 天</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键词解析 / 品牌介绍 -->
+  <section class="dm-section dm-about" id="dm-about">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">ABOUT THE BRAND</div>
+          <h2 class="dm-sec-title">关于每日大赛在线入口</h2>
+          <p class="dm-sec-sub">一个把“命题创作”变成日常仪式的原创视频赛事品牌，也是一个持续运营的创作者社区。</p>
+        </div>
+      </div>
+      <div class="dm-about-grid">
+        <article class="dm-about-card">
+          <h3><span>01</span>我们在做什么</h3>
+          <p>每日大赛在线入口，是本品牌面向全体创作者与企业合作伙伴开放的统一官方入口。我们把“每日大赛”做成一种可持续的内容生产方式：每一期由策展团队发布一个具体命题，创作者在规定周期内完成脚本、拍摄与剪辑，通过在线入口完成报名、上传作品、参与投票与获取反馈。整套流程公开、透明、可追溯，让每一位参与者都能清楚知道自己的作品走到了哪一步。</p>
+          <p>赛事不是一次性活动，而是长期运营的内容生态。截至当前，我们已完成 47 期主题征集，覆盖城市探索、手作日常、职场观察、户外记录、人物访谈、科技科普等 20 余个垂直领域，累计征集原创作品超过一万两千件。这些作品构成了品牌最核心的资产，也让“每日大赛”成为许多创作者固定回访的创作基地。</p>
+          <p>对企业与机构伙伴，我们提供命题共创、赛区联办、作品授权与内容定制服务，帮助品牌以更真实的方式进入社区语境，而不是打扰它。我们相信，好的内容生态需要平台、创作者与企业三方共同维护。</p>
+        </article>
+        <article class="dm-about-card">
+          <h3><span>02</span>为什么是“每日”</h3>
+          <p>很多创作者并不缺灵感，缺的是一个确定的开始时间。“每日大赛”的机制设计，正是为了降低启动门槛：命题具体、周期固定、规则简单、反馈及时。参与者不必等到准备万全，只要在当期时间窗内完成一支作品，就能获得来自社区的真实回应。</p>
+          <p>我们把评分拆成三部分：策展团队的专业评审、社区用户的公开投票、以及创作者之间的互评。三类权重公开可查，避免单一维度主导结果，也让新人有被看见的机会。每期结束后，官方会整理作品复盘与创作建议，形成可复用的方法论，反哺下一期参赛者。</p>
+          <p>这种节奏带来的不只是作品数量，更是一种稳定的社区情绪：每周都有新的命题，每周都有人第一次把自己的影像交给陌生人看。我们珍惜这种信任，因此对内容安全、原创声明与版权归属保持严格标准，所有上传作品均需通过原创声明与合规审核。</p>
+        </article>
+        <article class="dm-about-card">
+          <h3><span>03</span>关键词解读：在线入口</h3>
+          <p>“在线入口”在每日大赛的语境中，并不只是一个页面地址，而是一套完整的参与链路。它包含四个环节：报名登记、命题确认、作品上传、结果查询。任何一位创作者从首次进入官方网站，到最终拿到本期成绩，都不需要跳转第三方系统，也不需要额外填写繁琐表格。</p>
+          <p>我们把入口做得足够克制：首页即是赛区索引，作品卡片直接呈现信息流，创作者主页集中展示历史成绩。对于习惯使用移动端的用户，所有关键按钮都保持在拇指可及范围内；对于希望批量参与的企业赛区，我们也提供标准化的团队报名通道与数据回执。</p>
+          <p>需要说明的是，在线入口承载的是“参与”而不是“围观”。我们希望每一位进入页面的人，最终都会产生一次具体动作：报名、上传、投票、评论或分享。这也是品牌把首页设计成社区型结构的原因——内容必须可被触碰，赛事才真正成立。</p>
+        </article>
+        <article class="dm-about-card">
+          <h3><span>04</span>品牌价值观与承诺</h3>
+          <p>原创、正版、高清、专业，是我们对作品的基本要求；真实、温暖、陪伴、成长，是我们希望传递的社区气质。作为一个深耕创意赛事的垂直领域平台，我们不追求短期流量峰值，更在意长期口碑与创作者留存。</p>
+          <p>我们承诺：所有赛事规则提前公布，评审过程留痕，结果公开可查；所有合作品牌与赛区在页面上明确标注，不隐藏商业信息；所有用户作品在未获授权前不会被用于商业投放。用户至上不是口号，而是写进流程的约束。</p>
+          <p>面向未来，每日大赛将继续扩展赛区覆盖，推出面向新人的成长赛道、面向企业的共创赛道、以及面向公益议题的特别企划。我们希望这个在线入口，最终成为一代创作者共同的成长坐标。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="dm-section" id="dm-focus">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">FOCUS WORKS</div>
+          <h2 class="dm-sec-title">本期焦点作品</h2>
+          <p class="dm-sec-sub">第 47 期「城市的一分钟」命题赛区，由策展团队与社区共同精选。</p>
+        </div>
+        <a class="dm-sec-more" href="#dm-rank">查看完整榜单 &rarr;</a>
+      </div>
+      <div class="dm-focus-grid">
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="焦点作品封面：清晨地铁站台与第一班列车的光影">
+              <defs>
+                <linearGradient id="dmFc1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1a3a4a"/>
+                  <stop offset="1" stop-color="#0d1f2a"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#dmFc1)"/>
+              <rect x="0" y="170" width="480" height="100" fill="#0a161d"/>
+              <rect x="0" y="168" width="480" height="3" fill="#39b7ff" opacity=".55"/>
+              <g stroke="#2b5566" stroke-width="2" fill="none">
+                <line x1="0" y1="120" x2="480" y2="120"/>
+                <line x1="0" y1="90" x2="480" y2="90"/>
+              </g>
+              <g fill="#ffd166" opacity=".9">
+                <circle cx="90" cy="150" r="4"/>
+                <circle cx="200" cy="150" r="4"/>
+                <circle cx="310" cy="150" r="4"/>
+                <circle cx="400" cy="150" r="4"/>
+              </g>
+              <rect x="150" y="112" width="180" height="58" rx="6" fill="#16333f" stroke="#39b7ff" stroke-opacity=".5"/>
+              <rect x="168" y="128" width="50" height="26" rx="3" fill="#39b7ff" opacity=".55"/>
+              <rect x="230" y="128" width="50" height="26" rx="3" fill="#39b7ff" opacity=".35"/>
+              <circle cx="180" cy="178" r="9" fill="#0a161d" stroke="#39b7ff" stroke-opacity=".6"/>
+              <circle cx="300" cy="178" r="9" fill="#0a161d" stroke="#39b7ff" stroke-opacity=".6"/>
+              <path d="M120 100 L360 60 L360 70 L120 110 Z" fill="#20e3a2" opacity=".12"/>
+            </svg>
+            <span class="dm-cover-tag">本期精选</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《六点零七分，站台上的第一束光》</h3>
+            <p class="dm-card-desc">创作者用一支两分钟短片，记录通勤早高峰开始前的地铁站台。没有旁白，只有脚步声、广播与逐渐亮起的天光，把城市的“开机瞬间”拍得克制而动人。</p>
+            <div class="dm-card-tags">
+              <span class="dm-tag">城市探索</span><span class="dm-tag">日常记录</span><span class="dm-tag">治愈影像</span>
+            </div>
+            <div class="dm-meta">
+              <span class="dm-avatar" style="background:#ffd166">陈</span>
+              <span>陈屿 · 2 小时前</span>
+            </div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="1284">♡ <span>1284</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="焦点作品封面：手作工坊里的木屑与刻刀特写">
+              <rect width="480" height="270" fill="#2a1e14"/>
+              <rect x="0" y="0" width="480" height="270" fill="#3b2a1a" opacity=".5"/>
+              <circle cx="120" cy="90" r="70" fill="#8a5a2b" opacity=".35"/>
+              <path d="M0 210 Q120 170 240 200 T480 190 L480 270 L0 270 Z" fill="#6b4423"/>
+              <rect x="180" y="120" width="120" height="16" rx="8" fill="#d9a566" transform="rotate(-18 240 128)"/>
+              <rect x="250" y="150" width="90" height="10" rx="5" fill="#e8c48f" transform="rotate(12 295 155)"/>
+              <g fill="#ffd166" opacity=".8">
+                <circle cx="150" cy="200" r="2"/><circle cx="330" cy="215" r="2.5"/>
+                <circle cx="380" cy="175" r="1.8"/><circle cx="90" cy="230" r="2"/>
+              </g>
+            </svg>
+            <span class="dm-cover-tag">手作单元</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《一把刻刀的三十年》</h3>
+            <p class="dm-card-desc">跟拍一位老木作师傅的日常工作，从选料、刨平到上蜡，三分钟讲清一件小木器诞生的全过程。</p>
+            <div class="dm-card-tags"><span class="dm-tag">手作DIY</span><span class="dm-tag">人物访谈</span></div>
+            <div class="dm-meta">
+              <span class="dm-avatar" style="background:#ff8a5b">周</span>
+              <span>周木言 · 5 小时前</span>
+            </div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="946">♡ <span>946</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="焦点作品封面：夜跑者穿过城市霓虹街道">
+              <defs>
+                <linearGradient id="dmFc3" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#161226"/>
+                  <stop offset="1" stop-color="#22183a"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#dmFc3)"/>
+              <rect x="0" y="180" width="480" height="90" fill="#120e1e"/>
+              <g fill="#3a2a5c">
+                <rect x="20" y="80" width="70" height="100"/>
+                <rect x="110" y="50" width="58" height="130"/>
+                <rect x="190" y="95" width="80" height="85"/>
+                <rect x="300" y="66" width="66" height="114"/>
+                <rect x="390" y="100" width="72" height="80"/>
+              </g>
+              <g fill="#ff5b8a" opacity=".85">
+                <rect x="34" y="96" width="10" height="10"/><rect x="60" y="128" width="10" height="10"/>
+                <rect x="320" y="88" width="10" height="10"/><rect x="404" y="120" width="10" height="10"/>
+              </g>
+              <g fill="#39b7ff" opacity=".75">
+                <rect x="126" y="66" width="10" height="10"/><rect x="210" y="110" width="10" height="10"/>
+                <rect x="350" y="140" width="10" height="10"/>
+              </g>
+              <path d="M230 270 L250 180 L262 180 L282 270 Z" fill="#20e3a2" opacity=".25"/>
+              <circle cx="256" cy="168" r="9" fill="#20e3a2" opacity=".9"/>
+              <g stroke="#20e3a2" stroke-width="2" opacity=".5" fill="none">
+                <path d="M40 210 L200 190"/><path d="M300 200 L450 216"/>
+              </g>
+            </svg>
+            <span class="dm-cover-tag">社区高赞</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《跑过三座天桥的夜》</h3>
+            <p class="dm-card-desc">一位夜跑爱好者用运动相机记录下的城市夜间切片，霓虹、风与呼吸声构成独特的节奏感。</p>
+            <div class="dm-card-tags"><span class="dm-tag">健康运动</span><span class="dm-tag">城市探索</span></div>
+            <div class="dm-meta">
+              <span class="dm-avatar" style="background:#39b7ff">顾</span>
+              <span>顾南 · 昨天</span>
+            </div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="812">♡ <span>812</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="dm-section" id="dm-topics">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">SPECIAL PROGRAMS</div>
+          <h2 class="dm-sec-title">专题企划与赛区</h2>
+          <p class="dm-sec-sub">长期运营的品牌企划，每个专题都有独立的命题、评审与更新节奏。</p>
+        </div>
+      </div>
+      <div class="dm-topic-list">
+        <article class="dm-topic">
+          <div class="dm-topic-no">01</div>
+          <h3>城市的一分钟</h3>
+          <p>以一分钟为限，记录你所处城市最真实的一瞬。连续六期，累计收到 3,400 余支投稿，是社区参与度最高的常设专题。</p>
+          <div class="dm-topic-status">第 47 期报名中 · 6 天截止</div>
+        </article>
+        <article class="dm-topic">
+          <div class="dm-topic-no">02</div>
+          <h3>手艺人的一天</h3>
+          <p>聚焦传统手艺与当代设计的交界，用镜头记录一门手艺从材料到成品的完整过程，强调真实细节与慢节奏叙事。</p>
+          <div class="dm-topic-status">第 12 期评审中</div>
+        </article>
+        <article class="dm-topic">
+          <div class="dm-topic-no">03</div>
+          <h3>新人成长赛道</h3>
+          <p>专为首次参与每日大赛的创作者设立，命题更开放、评审更侧重表达诚意，优秀作品将进入官方推荐位。</p>
+          <div class="dm-topic-status">长期开放 · 随时报名</div>
+        </article>
+        <article class="dm-topic">
+          <div class="dm-topic-no">04</div>
+          <h3>企业共创赛区</h3>
+          <p>与企业伙伴共同命题，围绕真实业务场景征集创意短片，帮助品牌以更自然的方式进入社区语境。</p>
+          <div class="dm-topic-status">第 8 期筹备中</div>
+        </article>
+        <article class="dm-topic">
+          <div class="dm-topic-no">05</div>
+          <h3>公益影像计划</h3>
+          <p>围绕公共议题发起的特别企划，优秀作品将获得官方版权支持与线下展映机会，体现品牌的社会责任担当。</p>
+          <div class="dm-topic-status">年度企划 · 征集中</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门视频流 -->
+  <section class="dm-section" id="dm-stream">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">COMMUNITY STREAM</div>
+          <h2 class="dm-sec-title">社区热门作品流</h2>
+          <p class="dm-sec-sub">来自不同赛区与创作者的真实作品，持续更新中。</p>
+        </div>
+        <a class="dm-sec-more" href="#dm-rank">数据榜单 &rarr;</a>
+      </div>
+      <div class="dm-focus-grid">
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="社区作品封面：清晨菜市场的摊位与手写价签">
+              <rect width="480" height="270" fill="#3a2a1a"/>
+              <rect x="0" y="190" width="480" height="80" fill="#2a1e12"/>
+              <g>
+                <rect x="40" y="110" width="150" height="80" rx="4" fill="#7a4a24"/>
+                <rect x="200" y="120" width="130" height="70" rx="4" fill="#8a5a2b"/>
+                <rect x="342" y="104" width="110" height="86" rx="4" fill="#6b4423"/>
+              </g>
+              <g fill="#ffd166">
+                <circle cx="70" cy="150" r="9"/><circle cx="96" cy="146" r="8"/><circle cx="120" cy="152" r="10"/>
+                <circle cx="232" cy="156" r="8"/><circle cx="256" cy="150" r="9"/><circle cx="280" cy="158" r="7"/>
+                <circle cx="372" cy="148" r="8"/><circle cx="396" cy="154" r="9"/><circle cx="420" cy="146" r="7"/>
+              </g>
+              <g fill="#f4e3c8" opacity=".85">
+                <rect x="60" y="122" width="26" height="12" rx="2"/>
+                <rect x="216" y="130" width="26" height="12" rx="2"/>
+                <rect x="356" y="116" width="26" height="12" rx="2"/>
+              </g>
+              <circle cx="120" cy="60" r="26" fill="#ffb347" opacity=".3"/>
+            </svg>
+            <span class="dm-cover-tag">日常记录</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《菜市场里的五点半》</h3>
+            <p class="dm-card-desc">摊主们比城市醒得更早，这支短片记录了市场开门前的四十分钟，声音比画面更让人记住。</p>
+            <div class="dm-card-tags"><span class="dm-tag">美食烹饪</span><span class="dm-tag">城市探索</span></div>
+            <div class="dm-meta"><span class="dm-avatar" style="background:#ffb347">阿</span><span>阿岚 · 3 小时前</span></div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="673">♡ <span>673</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="社区作品封面：深夜书桌前的台灯与笔记本">
+              <rect width="480" height="270" fill="#131a26"/>
+              <rect x="0" y="200" width="480" height="70" fill="#0d1219"/>
+              <rect x="150" y="200" width="180" height="10" fill="#3a2a1a"/>
+              <path d="M220 200 L240 120 L280 120 L300 200 Z" fill="#2b3548"/>
+              <rect x="200" y="108" width="120" height="14" rx="7" fill="#39b7ff" opacity=".7"/>
+              <circle cx="260" cy="70" r="34" fill="#ffd166" opacity=".22"/>
+              <circle cx="260" cy="70" r="18" fill="#ffd166" opacity=".5"/>
+              <rect x="110" y="206" width="90" height="42" rx="3" fill="#22303f" transform="rotate(-6 155 227)"/>
+              <g stroke="#3f5770" stroke-width="2">
+                <line x1="124" y1="218" x2="186" y2="216"/>
+                <line x1="124" y1="228" x2="186" y2="226"/>
+              </g>
+            </svg>
+            <span class="dm-cover-tag">职场观察</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《加完班以后，我拍下了整层楼》</h3>
+            <p class="dm-card-desc">一次偶然的深夜留下，让创作者重新审视自己的工作空间。安静的镜头里藏着很多人的共同经验。</p>
+            <div class="dm-card-tags"><span class="dm-tag">职场日常</span><span class="dm-tag">情感故事</span></div>
+            <div class="dm-meta"><span class="dm-avatar" style="background:#39b7ff">李</span><span>李时针 · 6 小时前</span></div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="529">♡ <span>529</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="dm-card">
+          <div class="dm-cover">
+            <svg viewBox="0 0 480 270" role="img" aria-label="社区作品封面：山野露营帐篷与晨雾星空">
+              <defs>
+                <linearGradient id="dmFc6" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0d1b2a"/>
+                  <stop offset="1" stop-color="#1d3a2f"/>
+                </linearGradient>
+              </defs>
+              <rect width="480" height="270" fill="url(#dmFc6)"/>
+              <circle cx="380" cy="60" r="22" fill="#f4e3c8" opacity=".85"/>
+              <g fill="#f4e3c8" opacity=".6">
+                <circle cx="60" cy="40" r="1.6"/><circle cx="140" cy="66" r="1.4"/><circle cx="220" cy="30" r="1.8"/>
+                <circle cx="300" cy="54" r="1.5"/><circle cx="440" cy="34" r="1.6"/>
+              </g>
+              <path d="M0 210 Q100 140 200 180 T480 170 L480 270 L0 270 Z" fill="#132a23"/>
+              <path d="M140 210 L200 130 L260 210 Z" fill="#20e3a2" opacity=".28"/>
+              <path d="M140 210 L200 130 L260 210" stroke="#20e3a2" stroke-width="2" fill="none" opacity=".8"/>
+              <circle cx="204" cy="182" r="7" fill="#ffd166"/>
+            </svg>
+            <span class="dm-cover-tag">户外活动</span>
+            <span class="dm-play"><span></span></span>
+          </div>
+          <div class="dm-card-body">
+            <h3 class="dm-card-title">《第一次一个人去山里过夜》</h3>
+            <p class="dm-card-desc">从搭帐篷到手冲咖啡，创作者详细记录了独自露营的准备清单与真实体验，实用又治愈。</p>
+            <div class="dm-card-tags"><span class="dm-tag">旅行见闻</span><span class="dm-tag">实用技巧</span></div>
+            <div class="dm-meta"><span class="dm-avatar" style="background:#20e3a2">沈</span><span>沈野 · 昨天</span></div>
+            <div class="dm-card-actions">
+              <button type="button" class="dm-like-btn" data-count="487">♡ <span>487</span></button>
+              <button type="button" class="dm-collect-btn">☆ 收藏</button>
+              <button type="button" class="dm-share-btn">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="dm-section" id="dm-creators">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">CREATOR MATRIX</div>
+          <h2 class="dm-sec-title">创作者矩阵</h2>
+          <p class="dm-sec-sub">持续参与每日大赛、并稳定输出的优质创作者，是内容生态最坚实的一部分。</p>
+        </div>
+      </div>
+      <div class="dm-creator-grid">
+        <article class="dm-creator">
+          <div class="dm-creator-avatar" style="background:linear-gradient(135deg,#20e3a2,#39b7ff)">陈</div>
+          <h3>陈屿</h3>
+          <div class="dm-creator-role">城市纪录 / 治愈影像</div>
+          <p>坚持用固定机位记录城市日常，擅长把平常场景拍出节奏感，作品多次进入官方精选。</p>
+          <div class="dm-creator-stats">
+            <div><b>46</b>作品</div><div><b>3.2万</b>关注</div>
+          </div>
+        </article>
+        <article class="dm-creator">
+          <div class="dm-creator-avatar" style="background:linear-gradient(135deg,#ffd166,#ff8a5b)">周</div>
+          <h3>周木言</h3>
+          <div class="dm-creator-role">手作 / 人物访谈</div>
+          <p>走遍十二个县城拜访手艺人，专注记录手艺背后的时间成本与真实生活状态。</p>
+          <div class="dm-creator-stats">
+            <div><b>28</b>作品</div><div><b>2.1万</b>关注</div>
+          </div>
+        </article>
+        <article class="dm-creator">
+          <div class="dm-creator-avatar" style="background:linear-gradient(135deg,#39b7ff,#8b7bff)">顾</div>
+          <h3>顾南</h3>
+          <div class="dm-creator-role">运动 / 夜间城市</div>
+          <p>夜跑与骑行爱好者，习惯用运动相机记录城市在夜间的另一副面孔，节奏鲜明。</p>
+          <div class="dm-creator-stats">
+            <div><b>37</b>作品</div><div><b>1.8万</b>关注</div>
+          </div>
+        </article>
+        <article class="dm-creator">
+          <div class="dm-creator-avatar" style="background:linear-gradient(135deg,#ff8a5b,#ff5b8a)">阿</div>
+          <h3>阿岚</h3>
+          <div class="dm-creator-role">美食 / 市场观察</div>
+          <p>长期记录城市菜市场与早市摊贩，把食物背后的劳动讲得具体、平实、有温度。</p>
+          <div class="dm-creator-stats">
+            <div><b>22</b>作品</div><div><b>1.5万</b>关注</div>
+          </div>
+        </article>
+        <article class="dm-creator">
+          <div class="dm-creator-avatar" style="background:linear-gradient(135deg,#20e3a2,#ffd166)">沈</div>
+          <h3>沈野</h3>
+          <div class="dm-creator-role">户外 / 实用攻略</div>
+          <p>专注独自出行与轻量露营，作品强调可操作性，常被社区用户当作出行前参考。</p>
+          <div class="dm-creator-stats">
+            <div><b>31</b>作品</div><div><b>1.1万</b>关注</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单 -->
+  <section class="dm-section" id="dm-rank">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">DATA RANKING</div>
+          <h2 class="dm-sec-title">数据榜单</h2>
+          <p class="dm-sec-sub">基于真实互动数据统计，每期赛事结束后更新，结果公开可查。</p>
+        </div>
+      </div>
+      <div class="dm-rank-grid">
+        <div class="dm-rank-box">
+          <h3><span>◆</span>本期热度榜 TOP 6</h3>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">1</span><span class="dm-rank-name">六点零七分，站台上的第一束光</span><span class="dm-rank-val">12.4k</span></div>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">2</span><span class="dm-rank-name">跑过三座天桥的夜</span><span class="dm-rank-val">9.8k</span></div>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">3</span><span class="dm-rank-name">一把刻刀的三十年</span><span class="dm-rank-val">8.6k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">4</span><span class="dm-rank-name">菜市场里的五点半</span><span class="dm-rank-val">7.2k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">5</span><span class="dm-rank-name">加完班以后，我拍下了整层楼</span><span class="dm-rank-val">6.5k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">6</span><span class="dm-rank-name">第一次一个人去山里过夜</span><span class="dm-rank-val">5.9k</span></div>
+        </div>
+        <div class="dm-rank-box">
+          <h3><span>◆</span>新人成长榜 TOP 6</h3>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">1</span><span class="dm-rank-name">许一白</span><span class="dm-rank-val">首次参赛 · 4.6k</span></div>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">2</span><span class="dm-rank-name">南乔</span><span class="dm-rank-val">首次参赛 · 4.1k</span></div>
+          <div class="dm-rank-item dm-top"><span class="dm-rank-num">3</span><span class="dm-rank-name">林见夏</span><span class="dm-rank-val">第二期 · 3.7k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">4</span><span class="dm-rank-name">小满不是节气</span><span class="dm-rank-val">首次参赛 · 3.3k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">5</span><span class="dm-rank-name">晚风信件</span><span class="dm-rank-val">第二期 · 2.9k</span></div>
+          <div class="dm-rank-item"><span class="dm-rank-num">6</span><span class="dm-rank-name">半日闲</span><span class="dm-rank-val">首次参赛 · 2.5k</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="dm-section">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">VOICES FROM COMMUNITY</div>
+          <h2 class="dm-sec-title">社区的声音</h2>
+          <p class="dm-sec-sub">来自参与者的真实反馈，是我们持续优化赛事机制的依据。</p>
+        </div>
+      </div>
+      <div class="dm-comment-grid">
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#20e3a2">许</span><b>许一白</b><span>参与 1 期</span></div>
+          <p>第一次投稿其实很紧张，没想到当天就收到了十几条具体建议，不是那种敷衍的“拍得好”。这大概是我愿意继续参加的原因。</p>
+        </div>
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#ffd166">南</span><b>南乔</b><span>参与 3 期</span></div>
+          <p>命题给得很具体，反而更容易下手。以前我总是想拍点什么但不知道拍什么，现在每周都有明确的起点。</p>
+        </div>
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#39b7ff">林</span><b>林见夏</b><span>参与 4 期</span></div>
+          <p>评审规则公开这一点很重要，能清楚知道自己的作品差在哪一层。希望以后能多一些新人赛道的名额。</p>
+        </div>
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#ff8a5b">半</span><b>半日闲</b><span>参与 2 期</span></div>
+          <p>界面很干净，上传流程没有多余的步骤，手机上也能一次完成。对我这种不擅长折腾工具的人很友好。</p>
+        </div>
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#8b7bff">晚</span><b>晚风信件</b><span>参与 5 期</span></div>
+          <p>在这里认识了几位风格完全不同的创作者，互相看片、互相提意见，这种氛围比奖项本身更有吸引力。</p>
+        </div>
+        <div class="dm-comment">
+          <div class="dm-comment-head"><span class="dm-avatar" style="background:#ff5b8a">小</span><b>小满不是节气</b><span>参与 1 期</span></div>
+          <p>作为一个纯新人，能被放进新人成长榜真的挺受鼓舞的。希望后面能开放更多复盘内容。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 -->
+  <section class="dm-section" id="dm-news">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">BRAND NEWS</div>
+          <h2 class="dm-sec-title">企业动态与官方发布</h2>
+          <p class="dm-sec-sub">赛事安排、产品更新与品牌合作信息，均在此同步。</p>
+        </div>
+      </div>
+      <div class="dm-news-list">
+        <article class="dm-news-item">
+          <span class="dm-news-date">2026-11-18</span>
+          <div><h3>第 47 期「城市的一分钟」命题正式发布</h3><p>本期新增 4 个官方认证赛区，报名通道与作品上传入口同步开启，截止时间为 11 月 25 日 23:59。</p></div>
+        </article>
+        <article class="dm-news-item">
+          <span class="dm-news-date">2026-11-12</span>
+          <div><h3>创作方法论第二辑上线：如何在一分钟内讲完一个故事</h3><p>由策展团队整理的复盘手册已开放浏览，涵盖脚本结构、镜头分配与声音设计三个部分。</p></div>
+        </article>
+        <article class="dm-news-item">
+          <span class="dm-news-date">2026-11-05</span>
+          <div><h3>新人成长赛道完成机制升级</h3><p>新增互评环节与导师点评名额，优秀新人作品将获得官方推荐位与后续合作机会。</p></div>
+        </article>
+        <article class="dm-news-item">
+          <span class="dm-news-date">2026-10-28</span>
+          <div><h3>与企业伙伴共同发起「手艺人的一天」联办赛区</h3><p>本期联办赛区聚焦传统手艺与当代设计的结合，评审团由品牌方与社区策展人共同组成。</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作品牌 -->
+  <section class="dm-section">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">PARTNERS</div>
+          <h2 class="dm-sec-title">合作品牌与伙伴</h2>
+        </div>
+      </div>
+      <div class="dm-partners">
+        <div class="dm-partner">山海影像<small>影像技术支持</small></div>
+        <div class="dm-partner">拾光文创<small>线下展映合作</small></div>
+        <div class="dm-partner">长风设备<small>拍摄器材支持</small></div>
+        <div class="dm-partner">木幾工作室<small>命题共创</small></div>
+        <div class="dm-partner">青野文化<small>内容生态共建</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="dm-section">
+    <div class="dm-wrap">
+      <div class="dm-sec-head">
+        <div>
+          <div class="dm-sec-eyebrow">FAQ</div>
+          <h2 class="dm-sec-title">常见问题</h2>
+        </div>
+      </div>
+      <div class="dm-faq">
+        <details>
+          <summary>如何报名参加每日大赛？</summary>
+          <p>在首页点击“立即报名投稿”即可进入报名区。填写基础信息并确认当期命题后，系统会生成你的参赛编号，凭编号可上传作品并查询进度。</p>
+        </details>
+        <details>
+          <summary>作品需要满足什么规格？</summary>
+          <p>通用要求为 16:9 横版或 9:16 竖版均可，时长 30 秒至 5 分钟，分辨率不低于 1080P。命题有特殊要求时，以当期赛区说明为准。</p>
+        </details>
+        <details>
+          <summary>可以多次投稿吗？</summary>
+          <p>同一期赛事每位创作者最多提交 2 件作品，且主题须不同。多件作品将分别参与评审，最终成绩以最高分为准。</p>
+        </details>
+        <details>
+          <summary>原创声明与版权归属如何界定？</summary>
+          <p>投稿即视为创作者确认拥有作品完整版权。未经作者授权，平台不会将作品用于商业投放；如需用于展映或企划，会单独取得书面同意。</p>
+        </details>
+        <details>
+          <summary>评审结果什么时候公布？</summary>
+          <p>通常在报名截止后 7 个工作日内完成评审与公示。结果会同步发布在企业动态与创作者个人主页，公示期 3 天。</p>
+        </details>
+        <details>
+          <summary>企业如何发起联办赛区？</summary>
+          <p>可通过页面下方联系表单提交合作意向，注明主题方向与合作预期。策展团队会在 3 个工作日内回复，并协助完成命题设计。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系与投稿 -->
+  <section class="dm-section" id="dm-contact">
+    <div class="dm-wrap">
+      <div class="dm-contact-grid">
+        <div class="dm-contact-info">
+          <div class="dm-sec-eyebrow">CONTACT &amp; SUBMIT</div>
+          <h2 class="dm-sec-title" style="margin-bottom:16px">联系与投稿</h2>
+          <p>无论你是创作者、机构还是品牌方，都可以通过以下方式与我们取得联系。我们重视每一条真实反馈，并会在工作日内回复。</p>
+          <p><b style="color:#fff">品牌合作：</b>partner@daily-arena.example</p>
+          <p><b style="color:#fff">创作者支持：</b>creator@daily-arena.example</p>
+          <p><b style="color:#fff">办公地址：</b>城市创意园区 B 座 5 层 每日大赛品牌中心</p>
+          <p><b style="color:#fff">服务时间：</b>工作日 10:00 – 19:00</p>
+        </div>
+        <form class="dm-contact-form" id="dm-contact-form">
+          <div class="dm-field">
+            <label for="dm-name">称呼</label>
+            <input type="text" id="dm-name" placeholder="请输入你的称呼" required>
+          </div>
+          <div class="dm-field">
+            <label for="dm-email">联系方式</label>
+            <input type="text" id="dm-email" placeholder="邮箱或常用社交账号" required>
+          </div>
+          <div class="dm-field">
+            <label for="dm-msg">你想说的事</label>
+            <textarea id="dm-msg" placeholder="投稿咨询、合作意向或使用反馈" required></textarea>
+          </div>
+          <button type="submit" class="dm-btn dm-btn-main" style="width:100%;justify-content:center">提交信息</button>
+          <div class="dm-form-tip" id="dm-form-tip">已收到你的信息，我们会在工作日内回复。</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="dm-footer">
+  <div class="dm-wrap">
+    <div class="dm-footer-grid">
+      <div class="dm-footer-brand">
+        <a class="dm-logo" href="#dm-top">
+          <span class="dm-logo-mark">赛</span>
+          <span>每日大赛<small>DAILY ARENA</small></span>
+        </a>
+        <p>每日大赛在线入口官方网站，原创视频赛事品牌，持续运营的创作者社区。正版、高清、专业的精品内容，与每一位参与者共同成长。</p>
+      </div>
+      <div>
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="#dm-focus">焦点作品</a></li>
+          <li><a href="#dm-topics">专题企划</a></li>
+          <li><a href="#dm-creators">创作者矩阵</a></li>
+          <li><a href="#dm-rank">数据榜单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>品牌与支持</h4>
+        <ul>
+          <li><a href="#dm-about">品牌故事</a></li>
+          <li><a href="#dm-news">企业动态</a></li>
+          <li><a href="#dm-contact">合作联系</a></li>
+          <li><a href="#dm-contact">投稿入口</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>社区信息</h4>
+        <ul>
+          <li><a href="#dm-stream">作品流</a></li>
+          <li><a href="#dm-about">赛事规则</a></li>
+          <li><a href="#dm-contact">帮助与反馈</a></li>
+          <li><a href="#dm-top">返回首页</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dm-footer-bottom">
+      <span>© 2026 每日大赛 官方网站 · 版权所有 · 持续运营中</span>
+      <span>品牌备案号：DM-ARENA-2026-047 · 内容均标注原创与授权信息</span>
+    </div>
+  </div>
+</footer>
+
+<button class="dm-top" id="dm-top-btn" aria-label="回到顶部">↑</button>
+<div class="dm-toast" id="dm-toast"></div>
+
+<!-- 分享弹窗 -->
+<div class="dm-modal" id="dm-share-modal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-close="dm-share-modal" aria-label="关闭">×</button>
+    <h3>分享这个入口</h3>
+    <p>把本期赛区分享给更多创作者，一起参与每日大赛。</p>
+    <div class="dm-share-row">
+      <button type="button" class="dm-share-option">微信</button>
+      <button type="button" class="dm-share-option">微博</button>
+      <button type="button" class="dm-share-option">QQ</button>
+      <button type="button" class="dm-copy-link">复制链接</button>
+    </div>
+  </div>
+</div>
+
+<!-- 反馈弹窗 -->
+<div class="dm-modal" id="dm-feedback-modal">
+  <div class="dm-modal-box">
+    <button class="dm-modal-close" data-close="dm-feedback-modal" aria-label="关闭">×</button>
+    <h3>举报与反馈</h3>
+    <p>如发现违规内容或使用问题，请简要描述，我们会尽快核实处理。</p>
+    <textarea placeholder="请描述具体问题…" id="dm-feedback-text"></textarea>
+    <button type="button" class="dm-btn dm-btn-main" id="dm-feedback-send" style="width:100%;justify-content:center">提交反馈</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toastEl = document.getElementById('dm-toast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('dm-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('dm-show'); }, 2200);
+  }
+
+  // 移动端导航
+  var burger = document.getElementById('dm-burger');
+  var nav = document.getElementById('dm-nav');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('dm-open');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ nav.classList.remove('dm-open'); }
+  });
+
+  // 搜索
+  var searchBtn = document.getElementById('dm-search-btn');
+  var searchInput = document.getElementById('dm-search-input');
+  var searchResult = document.getElementById('dm-search-result');
+  function doSearch(){
+    var kw = searchInput.value.trim();
+    if(!kw){
+      searchResult.textContent = '请输入关键词，例如「城市」「手作」「新人赛道」。';
+      searchResult.classList.add('dm-show');
+      return;
+    }
+    searchResult.textContent = '已为你检索「' + kw + '」：在焦点作品、专题企划与创作者矩阵中找到相关内容，可继续浏览下方赛区。';
+    searchResult.classList.add('dm-show');
+  }
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+  });
+  document.addEventListener('click', function(e){
+    if(!searchResult.contains(e.target) && e.target !== searchInput && e.target !== searchBtn){
+      searchResult.classList.remove('dm-show');
+    }
+  });
+
+  // 点赞 / 收藏
+  document.querySelectorAll('.dm-like-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = btn.querySelector('span');
+      var base = parseInt(btn.getAttribute('data-count'), 10) || 0;
+      var liked = btn.classList.toggle('dm-liked');
+      span.textContent = liked ? (base + 1) : base;
+      btn.firstChild.textContent = liked ? '♥ ' : '♡ ';
+    });
+  });
+  document.querySelectorAll('.dm-collect-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('dm-collected');
+      btn.textContent = on ? '★ 已收藏' : '☆ 收藏';
+      toast(on ? '已加入收藏' : '已取消收藏');
+    });
+  });
+
+  // 分享弹窗
+  var shareModal = document.getElementById('dm-share-modal');
+  document.querySelectorAll('.dm-share-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){ shareModal.classList.add('dm-show'); });
+  });
+  document.querySelectorAll('.dm-share-option').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      shareModal.classList.remove('dm-show');
+      toast('已打开' + btn.textContent + '分享面板');
+    });
+  });
+  var copyBtn = document.querySelector('.dm-copy-link');
+  copyBtn.addEventListener('click', function(){
+    var text = '每日大赛在线入口 · 第 47 期「城市的一分钟」正在报名';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){
+        shareModal.classList.remove('dm-show');
+        toast('链接已复制到剪贴板');
+      }).catch(function(){
+        toast('复制失败，请手动复制');
+      });
+    } else {
+      shareModal.classList.remove('dm-show');
+      toast('链接已生成，请手动复制');
+    }
+  });
+
+  // 弹窗关闭通用
+  document.querySelectorAll('[data-close]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.getElementById(btn.getAttribute('data-close')).classList.remove('dm-show');
+    });
+  });
+  document.querySelectorAll('.dm-modal').forEach(function(m){
+    m.addEventListener('click', function(e){
+      if(e.target === m){ m.classList.remove('dm-show'); }
+    });
+  });
+
+  // 联系表单
+  var form = document.getElementById('dm-contact-form');
+  var formTip = document.getElementById('dm-form-tip');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    formTip.classList.add('dm-show');
+    form.reset();
+    toast('信息已提交，感谢你的反馈');
+  });
+
+  // 反馈按钮
+  var feedbackSend = document.getElementById('dm-feedback-send');
+  feedbackSend.addEventListener('click', function(){
+    var t = document.getElementById('dm-feedback-text');
+    if(!t.value.trim()){ toast('请先填写反馈内容'); return; }
+    t.value = '';
+    document.getElementById('dm-feedback-modal').classList.remove('dm-show');
+    toast('反馈已提交，我们会尽快核实');
+  });
+
+  // 回顶
+  var topBtn = document.getElementById('dm-top-btn');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500){ topBtn.classList.add('dm-show'); }
+    else { topBtn.classList.remove('dm-show'); }
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+
+</body>
+  </html>
